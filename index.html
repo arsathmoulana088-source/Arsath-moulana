@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GoogleFitBuddy — AI Training Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="kicker">GENERATIVE FITNESS &nbsp;·&nbsp; POWERED BY GEMINI</p>
+    <h1>Google<span>Fit</span>Buddy</h1>
+    <p class="sub">Tell it your goal, level, equipment and diet. It builds a full 7-day training log with sets, reps, rest and matching meals — generated fresh for you, not pulled from a template.</p>
+  </header>
+
+  <div class="card form-card">
+    <div class="field-grid">
+      <div class="field">
+        <label for="goal">Fitness goal</label>
+        <select id="goal">
+          <option value="General fitness">General fitness</option>
+          <option value="Weight loss">Weight loss</option>
+          <option value="Muscle gain">Muscle gain</option>
+          <option value="Endurance">Endurance</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="level">Experience level</label>
+        <select id="level">
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="equipment">Equipment</label>
+        <select id="equipment">
+          <option value="No equipment">No equipment</option>
+          <option value="Dumbbells only">Dumbbells only</option>
+          <option value="Home gym basics">Home gym basics</option>
+          <option value="Full gym access">Full gym access</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="diet">Dietary preference</label>
+        <select id="diet">
+          <option value="No restriction">No restriction</option>
+          <option value="Vegetarian (Indian)">Vegetarian</option>
+          <option value="Vegan">Vegan</option>
+          <option value="Non-vegetarian">Non-vegetarian</option>
+          <option value="High-protein">High-protein</option>
+          <option value="Low-carb / keto">Low-carb / keto</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="generate-row">
+      <button class="go" id="genBtn">GENERATE PLAN</button>
+      <span class="status-line" id="statusLine"></span>
+    </div>
+
+    <p class="disclaimer">This is a general fitness and wellness planning tool, not a medical diagnosis system. It isn't professional medical or nutrition advice — check with a doctor before starting a new program, especially with any existing condition.</p>
+  </div>
+
+  <div class="skeleton" id="skeleton">
+    <div class="sk-bar" style="width:60%"></div>
+    <div class="sk-bar" style="width:90%"></div>
+    <div class="sk-bar" style="width:75%"></div>
+  </div>
+
+  <div id="results">
+    <div class="macros" id="macros"></div>
+    <div class="day-tabs" id="dayTabs"></div>
+    <div id="dayPanels"></div>
+    <div class="grocery">
+      <h3 class="section-h" style="margin-top:0;border-bottom:none;padding-bottom:0;">Grocery list</h3>
+      <div class="grocery-grid" id="groceryGrid"></div>
+    </div>
+  </div>
+
+  <footer>Plans are AI-generated per request and not saved between visits.</footer>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
